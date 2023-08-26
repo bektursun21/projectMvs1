@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<meta charset="UTF-8">
+<title>Movie</title>
+<style>
+    body {
+        background: #011010;
+    }
+</style>
+<body>
+
+<div>
+    <form
+            th:object="${update}"
+            th:method="post"
+            th:action="@{/movie/merge_update/{id}(id=${update.id})}"
+            style="width: 450px; height: 300px; margin-top: 270px; margin-left: 600px">
+
+        <div class="form-group">
+            <label style="color: #F5F5F5"for="exampleInputEmail1">movie name</label>
+            <input  th:field="${update.name}" type="text" class="form-control" id="exampleInputEmail1"
+                   aria-describedby="emailHelp"
+                   placeholder="user name">
+        </div>
+        <div>
+            <select th:field="${update.genres}">
+                <option th:each="genre:${genres1}"
+                        th:value="${genre}"
+                        th:text="${genre.name}">
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label style="color: #F5F5F5"for="exampleInputPassword3">create date</label>
+            <input  th:field="${update.creteDate}" type="text" class="form-control" id="exampleInputPassword3"
+                   placeholder="create date">
+        </div>
+        <div class="form-group">
+            <label style="color: #F5F5F5"for="exampleInputPassword4">country</label>
+            <input th:field="${update.country}" type="text" class="form-control" id="exampleInputPassword4"
+                   placeholder="country">
+        </div>
+        <div class="form-group">
+            <label style="color: #F5F5F5"for="exampleInputPassword5">language</label>
+            <input th:field="${update.language}" type="text" class="form-control" id="exampleInputPassword5"
+                   placeholder="language">
+        </div>
+        <button type="submit" class="btn btn-outline-warning">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

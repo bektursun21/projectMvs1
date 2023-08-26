@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<meta charset="UTF-8">
+<title>Session</title>
+<style>
+    body {
+        background: #011010;
+    }
+</style>
+<body>
+
+<div class="btn-group" style="margin-left: 1000px">
+    <a th:href="@{/cinema/find_all}">
+        <button style="color: #F5F5F5" type="button" class="btn btn-link"><strong>AllCinemas</strong></button>
+    </a>
+    <a th:href="@{/movie/find_all}">
+        <button style="color: #F5F5F5" type="button" class="btn btn-link"><strong>AllMovies</strong></button>
+    </a>
+    <a th:href="@{/session/find_all}">
+        <button style="color: #F5F5F5" type="button" class="btn btn-link"><strong>AllSessions</strong></button>
+    </a>
+    <a th:href="@{/room/find_all}">
+        <button style="color: #F5F5F5" type="button" class="btn btn-link"><strong>AllRooms</strong></button>
+    </a>
+
+</div>
+
+</div>
+<form
+        th:method="post"
+        th:action="@{/session/merge_update/{id}(id=${session.id})}"
+        th:object="${sess}"
+        style="width: 450px; height: 300px; margin-top: 270px; margin-left: 600px">
+
+    <div class="form-group">
+        <label style="color: #F5F5F5" for="1">Session</label>
+        <input th:field="${sess.name}" type="text" class="form-control" id="1" aria-describedby="emailHelp"
+               placeholder="Name">
+    </div>
+    <div class="form-group">
+        <label style="color: #F5F5F5" for="2">Start</label>
+        <input th:field="${sess.getStart()}" type="text" class="form-control" id="2" placeholder="data of start">
+    </div>
+    <div class="form-group">
+        <label style="color: #F5F5F5" for="3">Finish</label>
+        <input th:field="${sess.getFinish()}" type="text" class="form-control" id="3" placeholder="data of finish">
+    </div>
+
+    <button type="submit" class="btn btn-outline-warning">Submit</button>
+</form>
+</body>
+</html>

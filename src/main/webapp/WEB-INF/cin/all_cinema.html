@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<meta charset="UTF-8">
+<title>Cinema</title>
+<style>
+    body {
+        background: #011010;
+    }
+</style>
+<style>
+    body {
+        background: #011010;
+    }
+    .btn-group{
+        margin-top: 100px;
+        margin-left: 660px;
+    }
+</style>
+<body>
+<div class="btn-group" >
+    <a href="/cinema/find_all">
+        <button type="button" class="btn btn-outline-secondary">All Cinema</button>
+    </a>
+    <a href="/movie/find_all">
+        <button type="button" class="btn btn-outline-secondary">All Movie</button>
+    </a>
+    </a>
+    <a href="/session/find_all">
+        <button type="button" class="btn btn-outline-secondary">All Session</button>
+        <!--        <button style="color: #F5F5F5"type="button" class="btn btn-default" th:href="@{/session/find_all}"><strong>AllSessions</strong>-->
+        </button>
+    </a>
+    <a href="/room/find_all">
+        <button type="button" class="btn btn-outline-secondary">All Room</button>
+
+        <!--        <button style="color: #F5F5F5"type="button" class="btn btn-default"><strong>AllRooms</strong></button>-->
+    </a>
+</div>
+
+<!--<div class="btn-group" style="margin-left: 1000px">-->
+<!--    <a th:href="@{/cinema/find_all}">-->
+<!--        <button type="button" class="btn btn-default"><strong>AllCinemas</strong></button>-->
+<!--    </a>-->
+<!--    <a th:href="@{/movie/find_all}">-->
+<!--        <button type="button" class="btn btn-default"><strong>AllMovies</strong></button>-->
+<!--    </a>-->
+<!--    <a th:href="@{/session/find_all}">-->
+<!--        <button type="button" class="btn btn-default" th:href="@{/session/find_all}"><strong>AllSessions</strong>-->
+<!--        </button>-->
+<!--    </a>-->
+<!--    <a th:href="@{/room/find_all}">-->
+<!--        <button type="button" class="btn btn-default"><strong>AllRooms</strong></button>-->
+<!--    </a>-->
+
+<!--</div>-->
+
+<table class="table"
+       style="width: 450px; height: 300px; margin-top: 100px; margin-left: 600px">
+    <thead class="thead-dark">
+    <tr  >
+        <th scope="col"><b>ID</b></th>
+        <th scope="col"><b>NAME</b></th>
+        <th scope="col"><b>NUMBER</b></th>
+        <th scope="col"><b>DELETE</b></th>
+        <th scope="col"><b>UPDATE</b></th>
+        <th scope="col"><b>
+            <a th:href="@{/cinema/save}">
+                <button type="button" class="btn btn-outline-info">Add Cinema</button>
+            </a>
+        </b></th>
+
+    </thead>
+    <tbody>
+    <tr style="color: #F5F5F5" th:each="cinema:${all_cinema}">
+        <td th:text="${cinema.id}"></td>
+        <td th:text="${cinema.name}"></td>
+        <td th:text="${cinema.address}"></td>
+        <td>
+            <form th:method="post"
+                  th:action="@{/cinema/delete_by_id/{id}(id=${cinema.getId()})}">
+                <button type="submit" class="btn btn-outline-danger">delete</button>
+            </form>
+        <td>
+            <form
+                    th:method="get"
+                    th:action="@{/cinema/update/{id}(id=${cinema.getId()})}">
+                <button type="submit" class="btn btn-outline-warning">update</button>
+            </form>
+        </td>
+        <td>
+            <a th:href="@{/room/find_all_by_cinema_id/{id}(id=${cinema.id})}">
+                <button type="button" class="btn btn-outline-info">room</button>
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

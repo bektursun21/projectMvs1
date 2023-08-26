@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<meta charset="UTF-8">
+<title>Session</title>
+<style>
+    body {
+        background: #011010;
+    }
+    .btn-group {
+        margin-top: 100px;
+        margin-left: 660px;
+    }
+</style>
+<body>
+
+<div class="btn-group">
+    <a href="/cinema/find_all">
+        <button type="button" class="btn btn-outline-secondary">All Cinema</button>
+    </a>
+    <a href="/movie/find_all">
+        <button type="button" class="btn btn-outline-secondary">All Movie</button>
+    </a>
+    </a>
+    <a href="/session/find_all">
+        <button type="button" class="btn btn-outline-secondary">All Session</button>
+        <!--        <button style="color: #F5F5F5"type="button" class="btn btn-default" th:href="@{/session/find_all}"><strong>AllSessions</strong>-->
+        </button>
+    </a>
+    <a href="/room/find_all">
+        <button type="button" class="btn btn-outline-secondary">All Room</button>
+
+        <!--        <button style="color: #F5F5F5"type="button" class="btn btn-default"><strong>AllRooms</strong></button>-->
+    </a>
+</div>
+
+<table class="table"
+       style="width: 450px; height: 300px; margin-top: 100px; margin-left: 550px">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col"><b>ID</b></th>
+        <th scope="col"><b>NAME</b></th>
+        <th scope="col"><b>START</b></th>
+        <th scope="col"><b>FINISH</b></th>
+        <th scope="col"><b>MOVIE</b></th>
+        <th scope="col"><b>ROOM</b></th>
+
+        <th>
+            <a th:href="@{/movie/save}">
+                <button type="button" class="btn btn-outline-info">AddSession</button>
+                <!--                <button type="button" class="btn btn-dark">ROOMS</button>-->
+            </a>
+        </th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${find_session.id}"></td>
+        <td th:text="${find_session.name}"></td>
+        <td th:text="${find_session.getStart()}"></td>
+        <td th:text="${find_session.getFinish()}"></td>
+
+
+<!--        <td>-->
+<!--            <a href="/movie/find_all"><button type="button" th:href="@{/session/find_by_id/{id}(id=${find_session.id})}" class="btn btn-outline-primary">enter</button></a>-->
+<!--        </td>-->
+<!--        <td><a class="btn btn-primary" th:href="@{/session/find_by_id/{id}(id=${find_session.id})}" role="button">Enter</a></td>-->
+
+        <!--        <td><a class="btn btn-danger" th:href="@{/cinema/update_cinema/{id}(id=${cinema.id})}" role="button" >del</a></td>-->
+    </tr>
+
+    </tbody>
+
+</table>
+
+</body>
+</html>

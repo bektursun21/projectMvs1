@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+<meta charset="UTF-8">
+<title>Room</title>
+<style>
+    body {
+        background: #011010;
+    }
+</style>
+<body>
+
+<!--<div class="btn-group" style="margin-left: 1000px">-->
+<!--    <a th:href="@{/cinema/find_all}">-->
+<!--        <button style="color: #F5F5F5"type="button" class="btn btn-link"><strong>AllCinemas</strong></button>-->
+<!--    </a>-->
+<!--    <a th:href="@{/movie/find_all}">-->
+<!--        <button style="color: #F5F5F5"type="button" class="btn btn-link"><strong>AllMovies</strong></button>-->
+<!--    </a>-->
+<!--    <a th:href="@{/session/find_all}">-->
+<!--        <button style="color: #F5F5F5"type="button" class="btn btn-link"><strong>AllSessions</strong></button>-->
+<!--    </a>-->
+<!--    <a th:href="@{/room/find_all}">-->
+<!--        <button style="color: #F5F5F5"type="button" class="btn btn-link"><strong>AllRooms</strong></button>-->
+<!--    </a>-->
+
+<!--</div>-->
+<div>
+    <form
+            th:method="post"
+            th:action="@{/room/save_room}"
+            th:object="${room}"
+            style="width: 330px; height: 300px; margin-top: 270px; margin-left: 690px">
+
+        <div class="form-group">
+            <label style="color: #F5F5F5" >Name of room</label>
+            <input th:field="${room.name}" type="text" class="form-control" id="1" aria-describedby="emailHelp"
+                   placeholder="Name">
+        </div>
+        <div class="form-group">
+            <label style="color: #F5F5F5" >Rating</label>
+            <input th:field="${room.rating}" type="text" class="form-control" id="2" placeholder="Rating">
+        </div>
+
+        <td>
+            <div class="dropdown">
+                <select th:field="*{cinemaId}" class="form-control ">
+                    <option th:each="cinema:${cinemaList}"
+                            th:text="${cinema.name}"
+                            th:value="${cinema.id}">
+                    </option>
+                </select>
+
+                <button type="submit" class="btn btn-outline-warning">Submit</button>
+
+            </div>
+        </td>
+    </form>
+</div>
+</body>
+</html>
